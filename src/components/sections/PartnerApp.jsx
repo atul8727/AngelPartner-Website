@@ -18,7 +18,7 @@ export default function PartnerApp({ d, fullWidth = false }) {
           <AppDownloadButtons variant="app" className="mt-7 justify-center lg:justify-start" />
         </FadeIn>
 
-        <div>
+        <div className="min-w-0 w-full">
           <SectionHeading title={d.appTitle} text="Pick a feature to see its screen on the phone." onDark className="!mb-6" />
           <div className="flex flex-col">
             {d.appFeatures.map((f, i) => {
@@ -45,11 +45,11 @@ export default function PartnerApp({ d, fullWidth = false }) {
             })}
           </div>
 
-          <div className="mt-7 grid grid-cols-3 divide-x divide-white/10">
+          <div className="mt-7 grid grid-cols-3 divide-x divide-white/10 text-center sm:text-left">
             {d.appRules.map((r) => (
-              <div key={r.big} className="px-4 first:pl-0">
-                <p className="text-xl font-semibold text-gold sm:text-[22px]">{r.big}</p>
-                <p className="mt-0.5 text-[13px] leading-snug text-white/65">{r.text}</p>
+              <div key={r.big} className="px-2 sm:px-4 first:pl-0">
+                <p className="text-lg font-semibold text-gold sm:text-xl lg:text-[22px]">{r.big}</p>
+                <p className="mt-0.5 text-xs sm:text-[13px] leading-snug text-white/65">{r.text}</p>
               </div>
             ))}
           </div>
