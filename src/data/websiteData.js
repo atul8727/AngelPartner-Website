@@ -32,7 +32,7 @@ export const hero = {
   eyebrow: 'Real estate partner program',
   title: 'Refer a buyer. Earn on every [[verified site visit]].',
   text: 'Angel Partner builds thoughtfully designed low-rise homes. Submit customer references, follow their progress and see your points and commissions in one place.',
-  image: { src: '/images/herosection 2.jpg', alt: 'Angel Partner low-rise home exterior' },
+  image: { src: '/images/hero-home.jpg', alt: 'Angel Partner low-rise home exterior' },
   badge: { icon: 'Award', title: '1 point', text: 'per verified site visit' },
   highlights: [
     { icon: 'BadgeCheck', title: '1 point', text: 'for every verified, completed site visit' },
