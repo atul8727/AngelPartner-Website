@@ -20,20 +20,30 @@ export default function ImageReveal({
   priority = false,
 }) {
   const [ref, inView] = useInView({ threshold: 0.01, rootMargin: '80px 0px 80px 0px' });
-  // Keep the asset visible in the server-rendered HTML. This is intentional:
-  // if a dev-server refresh ever misses a client chunk, visitors still see the
-  // real image instead of a full-size colour block.
-  const [isRevealed, setIsRevealed] = useState(true);
+  // Start covered, then wipe the brand-colour panel left → right when the
+  // image enters the viewport. This also drives the gentle image zoom-out.
+  const [isRevealed, setIsRevealed] = useState(false);
   const imgRef = useRef(null);
   const [missing, setMissing] = useState(false);
 
   // Safely format URI for spaces or special characters
   const safeSrc = src ? encodeURI(src).replace(/%2520/g, '%20') : '';
 
-  // Retain the in-view hook for future reveal variants, while the default stays
-  // fail-safe and visible before JavaScript has loaded.
   useEffect(() => {
-    if (inView) setIsRevealed(true);
+    if (!inView) return;
+
+    // Let the covered state paint once before changing it. Without this frame,
+    // React can commit the final state before the browser paints, making the
+    // wipe invisible (most noticeable on the About image).
+    let innerFrame;
+    const outerFrame = requestAnimationFrame(() => {
+      innerFrame = requestAnimationFrame(() => setIsRevealed(true));
+    });
+
+    return () => {
+      cancelAnimationFrame(outerFrame);
+      if (innerFrame) cancelAnimationFrame(innerFrame);
+    };
   }, [inView]);
 
   useEffect(() => {
