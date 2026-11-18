@@ -18,7 +18,7 @@ export default function FadeIn({ delay = 0, className = '', children }) {
     <div
       ref={ref}
       style={{ transitionDelay: `${delay}ms` }}
-      className={`fade-item transition-all duration-700 ease-out ${
+      className={`fade-item min-w-0 transition-all duration-700 ease-out ${
         isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
       } ${className}`}
     >

@@ -59,7 +59,7 @@ export default function AboutIntro({ d, fullWidth = false }) {
 
       <div className="relative grid items-center gap-12 lg:grid-cols-[1fr_1.05fr] lg:gap-16">
         {/* image (left): slanted brand shape with a forest offset behind it */}
-        <div className="relative mx-auto w-full max-w-xl lg:max-w-none">
+        <div className="min-w-0 relative mx-auto w-full max-w-xl lg:max-w-none">
           <div aria-hidden="true" className="about-shape absolute inset-0 -translate-x-3 translate-y-3 bg-forest sm:-translate-x-4 sm:translate-y-4" />
           <div className="drop-shadow-[0_24px_40px_rgba(30,58,43,0.22)]">
             <ImageReveal src={d.image.src} alt={d.image.alt} ratio="aspect-[10/11]" className="about-shape !rounded-none" />
@@ -67,7 +67,7 @@ export default function AboutIntro({ d, fullWidth = false }) {
         </div>
 
         {/* content (right) */}
-        <div>
+        <div className="min-w-0 w-full">
           <FadeIn>
             <p className="mb-6 flex items-center gap-4">
               <span className="h-px w-10 bg-gold/60 sm:w-20" />
